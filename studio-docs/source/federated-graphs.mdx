@@ -3,7 +3,7 @@ title: Federated graphs in Studio
 sidebar_title: Federated graphs
 ---
 
-<!-- don't forget to: import { VideoFrame } from 'gatsby-theme-apollo-docs' -->
+import { VideoFrame } from 'gatsby-theme-apollo-docs'
 
 A [federated graph](https://apollographql.com/docs/federation) (also known as a **supergraph** ) is a graph that’s composed of multiple individual **subgraphs**:
 
@@ -20,21 +20,21 @@ Each subgraph represents an underlying service or set of services that provide t
 
 Apollo Studio provides tools to help multiple teams collaborate on a federated graph and its subgraphs.
 
-<!-- video will go here -->
+<VideoFrame src="https://www.youtube.com/embed/QaxmqfXl8HI"/>
 
 ## Viewing a field's originating subgraph
 
 The **Schema > Reference** tab in Studio displays a table of your federated schema’s types and fields. This table includes a Subgraph column:
 
-<img class="screenshot" src="./img/federated-graphs/schema-reference-type-row-with-subgraph-column.jpg" width="736" />
+<img class="screenshot" src="./img/federated-graphs/schema-reference-type-row-with-subgraph-column.jpg" alt="Studio screenshot of Schema Reference, closeup of type row showing subgraph column" width="736" />
 
 Clicking the subgraph link for a type or field takes you to the line in the subgraph schema where it's defined:
 
-<img class="screenshot" src="./img/federated-graphs/type-definition-in-subgraph-sdl.jpg" width="700" />
+<img class="screenshot" src="./img/federated-graphs/type-definition-in-subgraph-sdl.jpg" alt="Studio screenshot of Schema SDL, closeup of type definition in subgraph schema" width="700" />
 
 If you're using [the `@contact` directive](#defining-subgraph-contact-information) to specify owner contact information for your subgraphs, hovering over a subgraph name displays its contact information, enabling you to follow up with the appropriate team:
 
-<img class="screenshot" src="./img/federated-graphs/schema-reference-type-row-showing-subgraph-contact-directive-tooltip.jpg" width="736" />
+<img class="screenshot" src="./img/federated-graphs/schema-reference-type-row-showing-subgraph-contact-directive-tooltip.jpg" alt="Studio screenshot showing subgraph contact tooltip in Schema Reference subgraph column" width="736" />
 
 ## Viewing subgraph SDL
 
@@ -49,9 +49,11 @@ From this tab you can:
 
 ## Subgraph contact info
 
-You can use the `@contact` directive to specify contact information for a particular subgraph, such as a name and URL. This information is visible in Studio, which helps your organization members find who to contact for assistance with a particular type or field:
+You can use the `@contact` directive to add your team's contact info to your subgraph schema. This info is displayed in Studio, helping _other_ teams know who to contact for assistance with the subgraph:
 
-<img class="screenshot" src="./img/federated-graphs/subgraph-contact-info-on-sdl-closeup.jpg" width="424" />
+<img class="screenshot" src="./img/federated-graphs/subgraph-contact-info-on-sdl-closeup.jpg" alt="Studio screenshot showing use of contact directive info as metadata in the Schema SDL view" width="424" />
+
+The contact info includes a name (of a team or individual), along with an optional description and custom URL.
 
 ### Adding the `@contact` directive to your subgraph
 
@@ -61,7 +63,7 @@ To add the `@contact` directive to your schema, you first need to _define_ the d
 directive @contact(
   "Contact title of the subgraph owner"
   name: String!
-  "URL where the subgraph can be reached"
+  "URL where the subgraph's owner can be reached"
   url: String
   "Other relevant notes can be included here; supports markdown links"
   description: String
@@ -112,11 +114,11 @@ Note that the `schema` object can’t be empty, so you need to add the `query` f
 
 After you register a subgraph schema with the `@contact` directive, the contact information is included in the metadata shown in Studio’s **Schema > SDL** tab:
 
-<img class="screenshot" src="./img/federated-graphs/subgraph-contact-info-on-sdl-closeup.jpg" width="424" />
+<img class="screenshot" src="./img/federated-graphs/subgraph-contact-info-on-sdl-closeup.jpg" alt="Studio screenshot showing use of contact directive info as metadata in the Schema SDL view" width="424" />
 
 In the **Schema > Reference** tab, you’ll also see a contact card when you hover over the subgraph link of a type or field:
 
-<img class="screenshot" src="./img/federated-graphs/schema-reference-contact-directive-tooltip-closeup.jpg" width="388" />
+<img class="screenshot" src="./img/federated-graphs/schema-reference-contact-directive-tooltip-closeup.jpg" alt="Studio screenshot showing subgraph contact tooltip in Schema Reference subgraph column" width="388" />
 
 ## Federation support in the Explorer
 
@@ -128,8 +130,8 @@ The [Apollo Studio Explorer](./explorer/) provides enhanced support for working 
 
 Studio displays a **Federated** label next to the name of a federated graph. If a federated graph has composition errors, you can click the label to view the errors that must be resolved before composition can succeed.
 
-<img class="screenshot" src="./img/federated-graphs/federated-graph-label-composition-error-state.jpg" width="426" />
+<img class="screenshot" src="./img/federated-graphs/federated-graph-label-composition-error-state.jpg" alt="Studio screenshot showing the Federated graph label in an error state" width="426" />
 
-<img class="screenshot" src="./img/federated-graphs/federated-graph-composition-error-modal.jpg" width="500" />
+<img class="screenshot" src="./img/federated-graphs/federated-graph-composition-error-modal.jpg" alt="Studio screenshot showing the composition error modal that is opened by clicking the Federated label in error state" width="500" />
 
 > [Learn more about composition errors](https://www.apollographql.com/docs/federation/errors/)
